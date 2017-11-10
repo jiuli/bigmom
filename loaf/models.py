@@ -20,6 +20,10 @@ class Question(models.Model):
     # 最近是否发布过
     def was_published_recently(self):
         return (timezone.now() - datetime.timedelta(days = 1)) <= self.publish_date <= timezone.now()
+        ''' 定义该方法在admin后台作为字段显示的样式 '''
+    was_published_recently.boolean = True
+    was_published_recently.admin_order_filed = 'publish_date'
+    was_published_recently.short_description = '最近是否发布?'
     
 class Choice(models.Model):
     ''' cascade表示级联操作，就是说，如果主键表中被参考字段更新，

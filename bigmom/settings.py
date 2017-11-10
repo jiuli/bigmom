@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'mylogin.apps.MyloginConfig',
+    'loaf.apps.LoafConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'loaf',
 ]
 
 MIDDLEWARE = [
@@ -54,8 +55,19 @@ ROOT_URLCONF = 'bigmom.urls'
 
 TEMPLATES = [
     {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',#jinja2模版
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),#模版文件位置
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'environment': 'bigmom.jinja2.environment',# ,
+        },
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+#         'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

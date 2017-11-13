@@ -1,11 +1,18 @@
-# -*- coding: UTF-8 -*-
-
 from django.conf.urls import url
-from django.contrib.auth import views as auth_views
-from django.views.generic.base import TemplateView
+from django.contrib.auth import views
 
+from . import views as my_views
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
-    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
-    ]
+    url(r'^$', my_views.dashboard, name='dashboard'),
+    url(r'^login/$', views.LoginView.as_view(), name='login'),
+    url(r'^logout/$', views.LogoutView.as_view(), name='logout'),
+
+    url(r'^password_change/$', views.PasswordChangeView.as_view(), name='password_change'),
+    url(r'^password_change/done/$', views.PasswordChangeDoneView.as_view(), name='password_change_done'),
+
+    url(r'^password_reset/$', views.PasswordResetView.as_view(), name='password_reset'),
+    url(r'^password_reset/done/$', views.PasswordResetDoneView.as_view(), name='password_reset_done'),
+    url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    url(r'^reset/done/$', views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+]

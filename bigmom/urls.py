@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^bigmom/', include('mylogin.urls', namespace='mylogin')),
+    url(r'^mylogin/', include('mylogin.urls', namespace='mylogin')),
     url(r'^loaf/', include('loaf.urls', namespace='loaf')),
     url(r'^admin/', admin.site.urls),
 ]

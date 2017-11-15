@@ -1,3 +1,8 @@
 eclipse.preferences.version=1
+encoding//blog/forms.py=utf-8
+encoding//blog/migrations/0001_initial.py=utf-8
+encoding//blog/templatetags/blog_tags.py=utf-8
 encoding//loaf/migrations/0001_initial.py=utf-8
+encoding//loaf/migrations/0002_question_user_id.py=utf-8
+encoding//loaf/migrations/0003_remove_question_user_id.py=utf-8
 encoding//loaf/urls.py=UTF-8

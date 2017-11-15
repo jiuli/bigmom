@@ -32,7 +32,7 @@ def index(request):
     context = {'question_list': question_list} #输出数据
     
     return HttpResponse(template.render(context, request))
-    # return render(request, 'polls/index.html', context) #这样写更简洁
+    # return render(request, 'polls/index.html', context) #这样写更�?�?
     
 def detail(request, question_id):
     '''
@@ -41,7 +41,7 @@ def detail(request, question_id):
     except Question.DoesNotExist:
         raise Http404("问题不存在")
     '''
-    ''' 一句替代上面所有 '''
+    ''' 下面一句替代上面所有 '''
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'loaf/detail.html', {'question':question})
 
@@ -57,12 +57,12 @@ def vote(request, question_id):
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
         return render(request, 'loaf/detail.html', {'question': question,
-                                                    'error_message':'您没有选择！'})
+                                                    'error_message':'您没有�?�择�?'})
     else:
         selected_choice.votes += 1
         selected_choice.save()
-    ''' 成功提交，必须跳转是一个好的web开发实践
-                        跳转到详情页，防止重复提交 
-                        使用reverse()避免了 hardcode a url
+    ''' 成功提交，必须跳转是一个好的web发实
+                        跳转到详情页，防止重复提交
+                        使用reverse()避免 hardcode a url
     '''
     return HttpResponseRedirect(reverse('loaf:results', args=(question_id,)))

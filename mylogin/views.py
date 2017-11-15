@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponse
 from django.shortcuts import render
 
 from .forms import MyLoginForm
-from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.

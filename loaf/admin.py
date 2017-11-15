@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from loaf.models import Question, Choice
 
+
 # admin.StackedInline  admin.TabularInline
 class ChoiceInline(admin.TabularInline):
     model = Choice

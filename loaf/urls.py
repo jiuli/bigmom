@@ -1,9 +1,9 @@
 # -*- coding: UTF-8 -*-
 ''' 匹配 /loaf/5/  name是为了html中使用{% url name%} 匹配用，
-                        作用是当 url(r'')变化时候，不用改，因为name没有变。  
+                        作用是当 url(r'')变化时，不用改，因为name没有变化  
     {% url 'detail' question_id %}
     {% url 'loaf:detail' question_id %}
-            写入namespace：loaf 得在 include()时候 添加 namespace='loaf'
+            写入namespace：loaf 得在 include()时 添加 namespace='loaf'
             如：include('loaf.urls', namespace='loaf')
     '''
 

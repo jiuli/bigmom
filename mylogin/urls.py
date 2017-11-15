@@ -2,6 +2,8 @@ from django.conf.urls import url
 from django.contrib.auth import views
 
 from . import views as my_views
+
+
 urlpatterns = [
     url(r'^$', my_views.dashboard, name='dashboard'),
     url(r'^login/$', views.LoginView.as_view(), name='login'),

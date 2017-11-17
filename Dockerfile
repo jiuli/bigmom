@@ -22,8 +22,7 @@ VOLUME ["/opt/python-work"]
 # 暴露端口
 EXPOSE 8091
 
-# 启动项目
-CMD ["/bin/sh", "run.sh"]
+# CMD ["/bin/sh", "run.sh"]
 
 # 设置变量
 ENV LANG en_US.UTF-8

@@ -1,6 +1,4 @@
-from _overlapped import NULL
 import datetime
-from unittest.util import _MAX_LENGTH
 
 from django.db import models
 from django.template.defaultfilters import default

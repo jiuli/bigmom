@@ -11,18 +11,19 @@ WORKDIR /opt/python-work/bigmom
 # 复制当前目录下所有到 /opt/python-work/bigmom
 ADD . /opt/python-work/bigmom
 RUN chmod 777 run.sh
-RUN mkdir -p /opt/python-work
+#RUN mkdir -p /opt/python-work
 # 安装要的python包
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 
-# 挂载到该目录
-VOLUME ["/opt/python-work"]
+# 挂载到该目录 便于代码更新上传到公共地方  
+VOLUME /opt/python-work/bigmom
 
 # 暴露端口
 EXPOSE 8091
 
-# CMD ["/bin/sh", "run.sh"]
+# 启动该项目容器用
+CMD ["/bin/sh", "run.sh"]
 
 # 设置变量
 ENV LANG en_US.UTF-8

@@ -1,0 +1,110 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="超级运营平台">
+    <meta name="author" content="lijs">
+    <link rel="icon" href="{% static 'account/images/sunny.jpg' %}">
+
+    <title>{% block title %}超级运营平台{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{% static 'account/css/ie10-viewport-bug-workaround.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'account/css/navbar.css' %}" rel="stylesheet">
+    {% block extrastyle %} {% endblock %}
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+        	{% block navbarheader %}
+          	<div class="navbar-header">
+            	<a class="navbar-brand" href="#">超级运营平台</a>
+          	</div>
+          	{% endblock %}
+          <div id="navbar" class="navbar-collapse collapse">
+          	{% block navbar_menu %}
+          	{% if request.user.is_authenticated %}
+          	<ul class="nav navbar-nav">
+              <li class="active"><a href="#">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li role="separator" class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            {% endif %}
+            {% endblock %}
+            <ul class="nav navbar-nav navbar-right">
+	            <li>
+	            {% if request.user.is_authenticated %}
+		            	<a href="{% url "logout" %}">您好 {{ request.user.username }}, 退出</a>
+		        {% else %}
+		            <a href="{% url "login" %}">登录</a>
+		        {% endif %}
+		        </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+		
+		{% block messages %}
+			{% if messages %}
+			<ul class="messagelist">
+			{% for message in messages %}
+			 <li{% if message.tags %} class="{{message.tags}}" {%endif%}>{{message|capfirst}}</li>
+			{% endfor %}	 	
+			</ul>
+			{% endif %}
+		{% endblock messages%}
+	 
+      	<!-- Content -->
+		<div id="content" class="{% block coltype %}jumbotron{% endblock %}">
+		    {% block pretitle %}{% endblock %}
+		    {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+		    {% block content %}
+		    {% block object-tools %}{% endblock %}
+		    {{ content }}
+		    {% endblock %}
+		    {% block sidebar %}{% endblock %}
+		    <br class="clear" />
+		</div>
+	    <!-- END Content -->
+	
+	
+	{% block footer %}<div id="footer"></div>{% endblock%}
+    </div> <!-- /container -->
+
+	
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'account/js/jquery.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'account/js/ie10-viewport-bug-workaround.js' %}"></script>
+  </body>
+</html>

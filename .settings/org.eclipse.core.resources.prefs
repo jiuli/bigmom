@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//account/forms.py=UTF-8
+encoding//base/MySQLPool.py=utf-8
 encoding//blog/forms.py=utf-8
 encoding//blog/migrations/0001_initial.py=utf-8
 encoding//blog/templatetags/blog_tags.py=utf-8

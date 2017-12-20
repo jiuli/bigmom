@@ -1,8 +1,9 @@
 FROM python:3.6-rc
+MAINTAINER jasonli 3131998116@qq.com
 ENV PYTHONUNBUFFERED 1
-RUN mkdir /code
+RUN mkdir /code/bigmom
 RUN mkdir /code/db
-WORKDIR /code
-ADD ./mysite/requirements.txt /code/
+WORKDIR /code/bigmom
+ADD requirements.txt /code/bigmom
 RUN pip install -r requirements.txt
-ADD . /code/
+ADD . /code/bigmom

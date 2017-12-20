@@ -3,16 +3,16 @@ db:
   expose:
     - "3306"
   volumes:
-    - ./db:/var/lib/mysql
+    - /opt/db:/var/lib/mysql
   environment:
     - MYSQL_DATABASE=bigmom_db
     - MYSQL_ROOT_PASSWORD=11111111  
 
 web:
   build: .
-  command: python ./bigmom/manage.py runserver 0.0.0.0:8000
+  command: python manage.py runserver 0.0.0.0:8000
   volumes:
-    - .:/code
+    - /opt/bigmom:/code/bigmom
   ports:
     - "8000:8000"
   links:
